@@ -3,7 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Image Carousel</title>
   </head>
-  <body></body>
+  <body>
+    <div class="carousel">
+      <button class="carousel__button carousel__button--left">
+        <img src="./assets/icons/arrow-left.svg" alt="" />
+      </button>
+      <div class="carousel__track-container">
+        <ul class="carousel__track">
+          <li class="carousel__slide">
+            <img
+              src="./assets/images/image1.jpeg"
+              alt=""
+              class="carousel__image"
+            />
+          </li>
+          <li class="carousel__slide">
+            <img
+              src="./assets/images/image2.jpeg"
+              alt=""
+              class="carousel__image"
+            />
+          </li>
+          <li class="carousel__slide">
+            <img
+              src="./assets/images/image3.jpeg"
+              alt=""
+              class="carousel__image"
+            />
+          </li>
+        </ul>
+      </div>
+      <button class="carousel__button carousel__button--right">
+        <img src="./assets/icons/arrow-right.svg" alt="" />
+      </button>
+
+      <div class="carousel__nav">
+        <button class="carousel__indicator"></button>
+        <button class="carousel__indicator"></button>
+        <button class="carousel__indicator"></button>
+      </div>
+    </div>
+  </body>
 </html>
