@@ -33,26 +33,13 @@ export default class CarouselController {
   #init() {
     this.#arrangeSlides();
     this.#setUpEventListeners();
+    this.#displaySlides();
   }
 
   #setUpEventListeners() {
     // Handle next button cick
     this.nextButton.addEventListener('click', () => {
-      const currentSlide = document.querySelector(
-        `.${this.#currentSlideClassName}`
-      );
-
-      const nextSlide = currentSlide.nextElementSibling;
-
-      const currentIndicator = this.nav.querySelector(
-        '.carousel__indicator--current'
-      );
-      const nextIndicator = currentIndicator.nextElementSibling;
-      const targetIndex = this.slides.findIndex((slide) => slide === nextSlide);
-
-      this.#moveSlide(currentSlide, nextSlide);
-      this.#updateIndicator(currentIndicator, nextIndicator);
-      this.#toggleSlideButton(targetIndex);
+      this.#moveToNextSlide();
     });
 
     // Handle previous button click
@@ -94,6 +81,61 @@ export default class CarouselController {
       this.#updateIndicator(currentIndicator, targetIndicator);
       this.#toggleSlideButton(targetIndex);
     });
+  }
+
+  #moveToNextSlide() {
+    const currentSlide = document.querySelector(
+      `.${this.#currentSlideClassName}`
+    );
+
+    const nextSlide = currentSlide.nextElementSibling;
+
+    const currentIndicator = this.nav.querySelector(
+      '.carousel__indicator--current'
+    );
+    const nextIndicator = currentIndicator.nextElementSibling;
+    const targetIndex = this.slides.findIndex((slide) => slide === nextSlide);
+
+    this.#moveSlide(currentSlide, nextSlide);
+    this.#updateIndicator(currentIndicator, nextIndicator);
+    this.#toggleSlideButton(targetIndex);
+  }
+
+  #resetSlide() {
+    const currentSlide = document.querySelector(
+      `.${this.#currentSlideClassName}`
+    );
+    const firstSlide = this.track.firstElementChild;
+
+    const currentIndicator = this.nav.querySelector(
+      '.carousel__indicator--current'
+    );
+
+    const nextIndicator = this.nav.firstElementChild;
+
+    this.#moveSlide(currentSlide, firstSlide);
+    this.#updateIndicator(currentIndicator, nextIndicator);
+    this.#toggleSlideButton(0); // resetting the slide always results in the first slide
+  }
+
+  #displaySlides() {
+    const SLIDE_INTERVAL = 5000;
+
+    setInterval(() => {
+      const currentSlide = document.querySelector(
+        `.${this.#currentSlideClassName}`
+      );
+      const targetIndex = this.slides.findIndex(
+        (slide) => slide === currentSlide
+      );
+
+      if (targetIndex === this.slides.length - 1) {
+        this.#resetSlide();
+        return;
+      }
+
+      this.#moveToNextSlide();
+    }, SLIDE_INTERVAL);
   }
 
   #createIndicators() {
