@@ -7,12 +7,12 @@
   </head>
   <body>
     <div class="carousel">
-      <button class="carousel__button carousel__button--left">
+      <button class="carousel__button carousel__button--left hide-button">
         <img src="./assets/icons/arrow-left.svg" alt="" />
       </button>
       <div class="carousel__track-container">
         <ul class="carousel__track">
-          <li class="carousel__slide">
+          <li class="carousel__slide carousel__slide--current">
             <img
               src="./assets/images/image1.jpeg"
               alt=""
@@ -39,13 +39,7 @@
         <img src="./assets/icons/arrow-right.svg" alt="" />
       </button>
 
-      <div class="carousel__nav">
-        <button
-          class="carousel__indicator carousel__indicator--current"
-        ></button>
-        <button class="carousel__indicator"></button>
-        <button class="carousel__indicator"></button>
-      </div>
+      <div class="carousel__nav"></div>
     </div>
   </body>
 </html>
