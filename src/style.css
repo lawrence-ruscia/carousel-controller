@@ -1,0 +1,102 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button {
+  border: none;
+}
+
+.carousel {
+  position: relative;
+  width: 80%;
+  height: 600px;
+
+  margin: 0 auto;
+
+  background-color: lightcoral;
+}
+
+.carousel__track-container {
+  position: relative;
+  height: 100%;
+}
+
+.carousel__track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carousel__slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  width: 100%;
+}
+
+.carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel__button {
+  position: absolute;
+
+  top: 50%;
+  padding: 6px 10px;
+
+  transform: translateY(-50%);
+  z-index: 2;
+
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  border-radius: 4px;
+}
+
+.carousel__button:focus {
+  outline: 1px black;
+}
+
+.carousel__button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel__button img {
+  width: 28px;
+}
+
+.carousel__button--left {
+  left: 0;
+}
+
+.carousel__button--right {
+  right: 0;
+}
+
+.carousel__nav {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+  gap: 12px;
+}
+
+.carousel__indicator {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.carousel__indicator--current {
+  background-color: rgba(0, 0, 0, 0.75);
+}
